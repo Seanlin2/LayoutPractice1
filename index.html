@@ -15,8 +15,8 @@
   
   <div id='main'>
     <div>
-      <input type='number' value='' name='number'  />
-      <input type='button' value='Go'  />
+      <input type='number' :value='num'  name='number'  />
+      <input type='button' value='Go' :click='init();'  />
     </div>
     <div class='box' v-for='item in DT' >
       <p>{{item.Id}}</p>
@@ -26,13 +26,14 @@
     var Main = new Vue({
         el: "#main",
         data: {
+          num:2,
           DT: [{
             Id:0,
             text:'',
           }]
         },
         created: function () {
-          this.init(2);
+          this.init(num);
         },
         methods: {
           init: function(e) {
