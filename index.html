@@ -46,7 +46,7 @@
           },
           Add: function(){
             var v = this;
-            v.DT.push(v.NewItem(v.num,'two'));
+            v.DT.push(v.NewItem(v.num +1 ,'two'));
             v.num +=1;
           },          
           Minus: function(){
@@ -55,8 +55,16 @@
             v.num -=1;
           },
           Change: function(){
-            console.log('Changed');
-            this.init();
+            var v = this;
+            if(v.num > v.DT.lengh){
+              for(i=0;i< (v.num - v.DT.lengh);i++){
+                v.Add();
+              }   
+            }else{
+              for(i=0;i< (v.DT.lengh - v.num);i++){
+                v.Minus();
+              }
+            }            
           },
           NewItem: function(Id,text){
             var newitem = {
