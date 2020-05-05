@@ -55,6 +55,7 @@
             v.num -=1;
           },
           Change: function(){
+            console.log('change :' + v.DT.lengh + ' to ' + v.num);
             var v = this;
             if(v.num > v.DT.lengh){
               for(i=0;i< (v.num - v.DT.lengh);i++){
