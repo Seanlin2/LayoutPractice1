@@ -18,7 +18,7 @@
       <input type='number' v-model='num'  name='number'  />
       <input type='button' value='Go' @click='Change()'  />
     </div>
-    <div class='box' v-for='item in DT' :key="item.Id" >
+    <div class='box' v-for='(item, index) in DT' :key="item.Id" >
       <p>{{item.Id}}</p>
     </div>
   </div>
