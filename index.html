@@ -41,7 +41,11 @@
             for(i=0;i<v.num;i++){
               this.DT[i] = this.NewItem(i+1,'one');
             }            
-          },          
+          },   
+          Change: function(){
+            console.log('Changed');
+            this.init();
+          },
           NewItem: function(Id,text){
             var newitem = {
               Id: Id,
