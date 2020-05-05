@@ -7,9 +7,47 @@
           content="ie=edge">
     <title>Personal Website</title>
     <link rel="stylesheet" href="assets/css/custom.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   
 </head>
 <body>
   <div class='box'></div>
+  
+  <div id='main'>
+    <div>
+      <input type='number' value='' name='number'  />
+      <input type='button' value='Go'  />
+    </div>
+    <div class='box' :for='item in DT' >
+      <p>{{item.Id}}</p>
+    </div>
+  </div>
+  <script>
+    var Main = new Vue({
+        el: "#main",
+        data: {
+          DT: [{
+            Id,
+            text,
+          }]
+        },
+        created: function () {
+          this.init(2);
+        },
+        methods: {
+          init: function(e) {
+            for(i=0;i<e;i++){
+              this.DT[i] = this.NewItem(i+1,'one');
+            }            
+          },          
+          NewItem: function(Id,text){
+            var item;
+            item.Id = Id
+            item.text = text
+            return item;
+          }
+        }
+      });
+  </script>
 </body>
 </html>
