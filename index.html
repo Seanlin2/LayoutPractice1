@@ -17,6 +17,8 @@
     <div>
       <input type='number' v-model='num'  name='number'  />
       <input type='button' value='Go' @click='Change()'  />
+      <input type='button' value='Add' @click='Add()'  />    
+      <input type='button' value='Minus' @click='Minus()'  />       
     </div>
     <div class='box' v-for='(item, index) in DT' :key="item.Id" >
       <p>{{item.Id}}</p>
@@ -41,7 +43,17 @@
             for(i=0;i<v.num;i++){
               this.DT[i] = this.NewItem(i+1,'one');
             }            
-          },   
+          },
+          Add: function(){
+            var v = this;
+            v.DT.push(v.NewItem(v.num,'two'));
+            v.num +=1;
+          },          
+          Minus: function(){
+            var v = this;
+            v.DT.pop();
+            v.num -=1;
+          },
           Change: function(){
             console.log('Changed');
             this.init();
