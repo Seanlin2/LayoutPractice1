@@ -16,7 +16,7 @@
   <div id='main'>
     <div>
       <input type='number' :value='num'  name='number'  />
-      <input type='button' value='Go' :click='init();'  />
+      <input type='button' value='Go' @click='init();'  />
     </div>
     <div class='box' v-for='item in DT' >
       <p>{{item.Id}}</p>
