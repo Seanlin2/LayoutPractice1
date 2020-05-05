@@ -16,7 +16,7 @@
   <div id='main'>
     <div>
       <input type='number' :value='num'  name='number'  />
-      <input type='button' value='Go' @click='init(num);'  />
+      <input type='button' value='Go' @click='init'  />
     </div>
     <div class='box' v-for='item in DT' :key="item.Id" >
       <p>{{item.Id}}</p>
@@ -33,11 +33,12 @@
           }]
         },
         created: function () {
-          this.init(this.num);
+          this.init();
         },
         methods: {
-          init: function(e) {
-            for(i=0;i<e;i++){
+          init: function() {
+            var v = this;
+            for(i=0;i<v.num;i++){
               this.DT[i] = this.NewItem(i+1,'one');
             }            
           },          
