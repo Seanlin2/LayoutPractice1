@@ -22,7 +22,7 @@
       <p>{{item.Id}}</p>
     </div>
   </div>
-  <script>
+  <script type='text/javascript'>
     var Main = new Vue({
         el: "#main",
         data: {
@@ -41,11 +41,11 @@
             }            
           },          
           NewItem: function(Id,text){
-            var item = {
+            var newitem = {
               Id: Id,
               text: text
             };            
-            return item;
+            return newitem;
           }
         }
       });
