@@ -41,9 +41,10 @@
             }            
           },          
           NewItem: function(Id,text){
-            var item;
-            item.Id = Id
-            item.text = text
+            var item = {
+              Id = Id;
+              text = text;
+            };            
             return item;
           }
         }
