@@ -61,6 +61,7 @@ table {
     }
 .box:hover {
     	background-color: #82baea;
+	color: white;
 }
 	.box > p{
 		text-align: center;
