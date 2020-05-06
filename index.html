@@ -56,15 +56,16 @@
           },
           Change: function(){
             var v = this;
+            var tDTL= v.DT.length;
             
-            console.log('change :' + v.DT.length + ' to ' + v.num);
+            console.log('change :' + tDTL + ' to ' + v.num);
             
-            if(v.num > v.DT.length){
-              for(i=0;i< (v.num - v.DT.length);i++){
+            if(v.num > tDTL){
+              for(i=0;i< (v.num - tDTL);i++){
                 v.Add();
               }   
             }else{
-              for(i=0;i< (v.DT.length - v.num);i++){
+              for(i=0;i< (tDTL - v.num);i++){
                 v.Minus();
               }
             }            
