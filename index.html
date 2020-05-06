@@ -57,14 +57,14 @@
           Change: function(){
             var v = this;
             
-            console.log('change :' + v.DT.lengh + ' to ' + v.num);
+            console.log('change :' + v.DT.length + ' to ' + v.num);
             
-            if(v.num > v.DT.lengh){
-              for(i=0;i< (v.num - v.DT.lengh);i++){
+            if(v.num > v.DT.length){
+              for(i=0;i< (v.num - v.DT.length);i++){
                 v.Add();
               }   
             }else{
-              for(i=0;i< (v.DT.lengh - v.num);i++){
+              for(i=0;i< (v.DT.length - v.num);i++){
                 v.Minus();
               }
             }            
