@@ -29,6 +29,7 @@
         el: "#main",
         data: {
           num:2,
+          nowDTlength:2,
           DT: [{
             Id:0,
             text:'',
@@ -46,13 +47,14 @@
           },
           Add: function(){
             var v = this;
-            v.DT.push(v.NewItem( Number(v.num) +1 ,'two'));
-            v.num +=1;
+            var nowlength = v.DT.length;
+            v.DT.push(v.NewItem( nowlength +1 ,'two'));
+            v.num = v.DT.length;
           },          
           Minus: function(){
             var v = this;
             v.DT.pop();
-            v.num -=1;
+            v.num = v.DT.length;
           },
           Change: function(){
             var v = this;
