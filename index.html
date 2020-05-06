@@ -57,15 +57,16 @@
           Change: function(){
             var v = this;
             var tDTL= v.DT.length;
+            var tnum= v.num;
             
-            console.log('change :' + tDTL + ' to ' + v.num);
+            console.log('change :' + tDTL + ' to ' + tnum);
             
-            if(v.num > tDTL){
-              for(i=0;i< (v.num - tDTL);i++){
+            if(tnum > tDTL){
+              for(i=0;i< (tnum - tDTL);i++){
                 v.Add();
               }   
             }else{
-              for(i=0;i< (tDTL - v.num);i++){
+              for(i=0;i< (tDTL - tnum);i++){
                 v.Minus();
               }
             }            
