@@ -15,7 +15,7 @@
   
   <div id='main'>
     <div>
-      <input type='number' v-model='num'  name='number'  />
+      <input type='number' v-model.number='num'  name='number'  />
       <input type='button' value='Go' @click='Change()'  />
       <input type='button' value='Add' @click='Add()'  />    
       <input type='button' value='Minus' @click='Minus()'  />       
@@ -46,7 +46,7 @@
           },
           Add: function(){
             var v = this;
-            v.DT.push(v.NewItem(v.num +1 ,'two'));
+            v.DT.push(v.NewItem( Number(v.num) +1 ,'two'));
             v.num +=1;
           },          
           Minus: function(){
