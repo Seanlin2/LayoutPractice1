@@ -6,17 +6,27 @@ var Main = new Vue({
           DT: [{
             Id:0,
             text:'',
-          }]
+          }],
+          sList:['bgbox']
         },
         created: function () {
-          this.init();
+          this.Init();
+          this.Hideall()
         },
         methods: {
-          init: function() {
+          Hideall: function(){
+            this.sList.forEach(e => $('#' + element).hide());   
+          },
+          Show: function(e){                  
+            if(!isNaN(e) && this.sList[e]!= undefined){
+                $('#' + this.sList[e]).show()
+            }
+          },        
+          Init: function() {
             var v = this;
             for(i=0;i<v.num;i++){
               this.DT[i] = this.NewItem(i+1,'one');
-            }            
+            } 
           },
           Add: function(){
             var v = this;
