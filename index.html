@@ -11,18 +11,24 @@
   
 </head>
 <body>
-  <div class='box'></div>
+  
   
   <div id='main'>
-    <div>
-      <input type='number' v-model.number='num'  name='number'  />
-      <input type='button' value='Go' @click='Change()'  />
-      <input type='button' value='Add' @click='Add()'  />    
-      <input type='button' value='Minus' @click='Minus()'  />       
-    </div>
-    <div class='box' v-for='(item, index) in DT' :key="item.Id" >
-      <p>{{item.Id}}</p>
-    </div>
+    <section id='boxbox'>
+      <div class='box'></div>
+      <div>
+        <input type='number' v-model.number='num'  name='number'  />
+        <input type='button' value='Go' @click='Change()'  />
+        <input type='button' value='Add' @click='Add()'  />    
+        <input type='button' value='Minus' @click='Minus()'  />       
+      </div>
+      <div class='box' v-for='(item, index) in DT' :key="item.Id" >
+        <p>{{item.Id}}</p>
+      </div>
+    </section>
+    <section id='bgbox'>
+      <div class='bgcontainer'></div>
+    </section>
   </div>
   <script type='text/javascript'>
     var Main = new Vue({
