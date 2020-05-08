@@ -71,7 +71,7 @@ table {
     border: 1px solid cornflowerblue;
     min-height: 250px;
     background: 
-	    linear-gradient(45deg, #eeff 50%,transparent 50%) center center /100% 100%, 
+	    linear-gradient(45deg, #eeff 50%,transparent 55%) center center /100% 100%, 
 	    url(https://via.placeholder.com/1024x768/77eeff/ffffff/?text=myback) right center / 50% 100%;
     overflow: hidden;
     background-position: right,left;
