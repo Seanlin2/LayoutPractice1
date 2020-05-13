@@ -18,8 +18,8 @@ var Main = new Vue({
             this.sList.forEach(e => $('#' + e).hide());   
           },
           Show: function(e){                  
-            if(!isNaN(e) && this.sList[e]!= undefined){
-                $('#' + this.sList[e]).show()
+            if(!isNaN(e) && this.sList[e-1]!= undefined){
+                $('#' + this.sList[e-1]).show()
             }
           },        
           Init: function() {
