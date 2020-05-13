@@ -22,7 +22,7 @@
         <input type='button' value='Add' @click='Add()'  />    
         <input type='button' value='Minus' @click='Minus()'  />       
       </div>
-      <div class='box' v-for='(item, index) in DT' :key="item.Id" >
+      <div class='box' v-for='(item, index) in DT' :key="item.Id" @click='Show(item.Id);' >
         <p>{{item.Id}}</p>
       </div>
     </section>
