@@ -15,7 +15,7 @@ var Main = new Vue({
         },
         methods: {
           Hideall: function(){
-            this.sList.forEach(e => $('#' + element).hide());   
+            this.sList.forEach(e => $('#' + e).hide());   
           },
           Show: function(e){                  
             if(!isNaN(e) && this.sList[e]!= undefined){
