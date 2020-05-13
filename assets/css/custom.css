@@ -49,6 +49,7 @@ table {
 
 /* Custom Code */
 
+/* BOX */
 .box{
 	background-color: aliceblue;
       	width: 50px;
@@ -67,6 +68,8 @@ table {
 		text-align: center;
     		padding-top: 18px;
 	}
+
+/* BG */
 .bgcontainer {
     border: 1px solid cornflowerblue;
     min-height: 250px;
@@ -83,4 +86,21 @@ table {
     opacity: 0.95;
 }
 .bgcontainer p{
+}
+
+/* BB */
+.BB {
+    background-color: aliceblue;
+    width: 80px;
+    height: 20px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid deepskyblue;
+}
+.BB:hover {
+    animation-name: rotate;
+    animation-duration: 2s;
+}
+@keyframes rotate {
+  100% { -webkit-transform: rotate(360deg); transform:rotate(360deg);
 }
