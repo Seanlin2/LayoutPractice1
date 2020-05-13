@@ -103,8 +103,8 @@ table {
     animation-direction: alternate;
 }
 @keyframes rotate {
-    50% { -webkit-transform: rotate(360deg); transform:rotate(360deg);}
-    100%{transform: translateX(100px);}
+    80% { -webkit-transform: rotate(1080deg); transform:rotate(1080deg);}
+    100%{transform: translateX(1000px);}
 }
 
 	
