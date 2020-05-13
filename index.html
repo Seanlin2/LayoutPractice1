@@ -15,8 +15,7 @@
   
   
   <div id='main'>
-    <section id='boxbox'>
-      <div class='box'></div>
+    <section id='boxbox'>      
       <div>
         <input type='number' v-model.number='num'  name='number'  />
         <input type='button' value='Go' @click='Change()'  />
@@ -29,6 +28,9 @@
     </section>
     <section id='bgbox'>
       <div class='bgcontainer'></div>
+    </section>
+    <section id='BBbox'>
+      <div class='BB' v-for='(item, index) in BBDT'></div>
     </section>
   </div>
   <!--FS S-->
