@@ -100,6 +100,7 @@ table {
 .BB:hover {
     animation-name: rotate;
     animation-duration: 2s;
+    animation-direction: alternate;
 }
 @keyframes rotate {
     50% { -webkit-transform: rotate(360deg); transform:rotate(360deg);}
