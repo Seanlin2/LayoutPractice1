@@ -20,7 +20,13 @@ var Main = new Vue({
           },
           Show: function(e){                  
             if(!isNaN(e) && this.sList[e-1]!= undefined){
-                $('#' + this.sList[e-1]).show()
+                var x = $('#' + this.sList[e-1]);    
+                if(x.css('display') == 'none')
+                {
+                    $('#' + this.sList[e-1]).show()
+                }else{
+                    $('#' + this.sList[e-1]).hide()
+                }                
             }
           },        
           Init: function() {
