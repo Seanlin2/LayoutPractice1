@@ -97,13 +97,23 @@ table {
     display: inline-block;
     border: 1px solid deepskyblue;
 }
-.BB:hover {
+.BB:first-child:hover {
     animation-name: rotate;
+    animation-duration: 2s;
+    animation-direction: alternate;
+}
+.BB:nth-child(2):hover {
+    animation-name: rotate3D;
     animation-duration: 2s;
     animation-direction: alternate;
 }
 @keyframes rotate {
     80% { -webkit-transform: rotate(1080deg); transform:rotate(1080deg);}
+    100%{transform: translateX(1000px) matrix(0.5,-0.2,2.7,0.6,-2.3,1.5);}
+}
+@keyframes rotate3D {
+    80% { transform: rotateY(60deg);
+  	transform-style: preserve-3d;}
     100%{transform: translateX(1000px);}
 }
 
