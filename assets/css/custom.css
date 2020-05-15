@@ -121,4 +121,12 @@ table {
     100%{transform: translateX(1000px);}
 }
 
+/* My word*.
+mwbox{
+  margin:5px;
+  padding:5px;
+  color:linen;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
 	
