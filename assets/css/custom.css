@@ -122,12 +122,12 @@ table {
 }
 
 /* My word*.
-mwbox{
+#mwbox{
   margin:5px;
   padding:5px;
   color:linen;  
 }
-mwbox>p{
+#mwbox>p{
     direction: rtl;
     unicode-bidi: bidi-override;
 }
