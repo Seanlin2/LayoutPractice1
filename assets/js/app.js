@@ -8,7 +8,7 @@ var Main = new Vue({
             text:'',
           }],
           BBDT: [{Id:1},{Id:2},{Id:3},{Id:4}],
-          sList:['bgbox','BBbox']
+          sList:['bgbox','BBbox','mwbox']
         },
         created: function () {
           this.Init();
