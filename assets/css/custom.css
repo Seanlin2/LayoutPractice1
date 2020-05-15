@@ -126,8 +126,10 @@ table {
   margin:5px;
   padding:5px;
   color:linen;  
+  bakeground-color:lightblue;
 }
 #mwbox>p{
+    font-size:5vw;
     direction: rtl;
     unicode-bidi: bidi-override;
 }
