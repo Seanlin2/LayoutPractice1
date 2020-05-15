@@ -125,8 +125,10 @@ table {
 mwbox{
   margin:5px;
   padding:5px;
-  color:linen;
-  direction: rtl;
-  unicode-bidi: bidi-override;
+  color:linen;  
+}
+mwbox>p{
+    direction: rtl;
+    unicode-bidi: bidi-override;
 }
 	
