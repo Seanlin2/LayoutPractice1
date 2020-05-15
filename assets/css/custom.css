@@ -101,11 +101,13 @@ table {
     animation-name: rotate;
     animation-duration: 2s;
     animation-direction: alternate;
+    animation-iteration-count: infinite;  
 }
 .BB:nth-child(2):hover {
     animation-name: rotate3D;
     animation-duration: 2s;
     animation-direction: alternate;
+    animation-iteration-count: infinite;  
 }
 @keyframes rotate {
     80% { -webkit-transform: rotate(1080deg); transform:rotate(1080deg);}
