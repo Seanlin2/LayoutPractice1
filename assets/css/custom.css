@@ -137,9 +137,10 @@ table {
 #pmbox{
   margin:5px;
   padding:5px;   
-  background: linear-gradient(75deg,hex(#2196f3ff),hex(#2196f300));  
+  background: linear-gradient(165deg,#2196f3ff,#2196f300);
 }
 #pmbox > p{
     font-size:2vw;
+    direction: rtl;
     riting-mode: vertical-rl;
 }	
