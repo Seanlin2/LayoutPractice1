@@ -133,6 +133,13 @@ table {
     direction: rtl;
     unicode-bidi: bidi-override;
 }
-
-
-	
+/* My Poem */
+#pmbox{
+  margin:5px;
+  padding:5px;   
+  background: linear-gradient(75deg,hex(#2196f3ff),hex(#2196f300));  
+}
+#pmbox > p{
+    font-size:2vw;
+    riting-mode: vertical-rl;
+}	
