@@ -140,7 +140,14 @@ table {
   background: linear-gradient(165deg,#2196f3ff,#2196f300);
 }
 #pmbox > p{
-    font-size:2vw;
-    direction: rtl;
-    riting-mode: vertical-rl;
+    float: right;
+    line-height: normal;
+    font-size: 2vw;
+    display: inline;
+    writing-mode: vertical-rl;
+    text-indent: 20px;
 }	
+#pmbox > p:first-child{
+	text-indent: 60px;
+}
+
