@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>人物移動聊天室</title>
+
+<!-- javascript -->
+<script src='http://code.jquery.com/jquery-1.11.1.min.js'></script>
+<script src='http://code.jquery.com/ui/1.10.4/jquery-ui.min.js'></script>
+<script src='node_modules/socket.io/node_modules/socket.io-client/dist/socket.io.min.js'></script>
+
+<style>
+<!--
+.div_container
+{
+position: absolute;
+}
+
+.div_role
+{
+           position: absolute;
+           top: 0px;
+           left: 0px;
+           width: 31.5px;
+           height: 48px;
+           overflow: hidden;
+}
+
+.div_role img
+{
+           position: absolute;
+           top: 0px;
+           left: 0px;
+}
+
+.div_scene
+{
+           position: absolute;
+           top: 10px;
+           left: 10px;
+           width: 1024px;
+           height: 768px;
+           border: #000000 2px solid;
+}
+-->
+</style>
+
+<script>
+
+//設定圖片座標時的編號
+var imgHorizontalNum = 0;
+var imgVerticalNum = 0;
+
+//設定人物換圖的定時器
+var timer;
+
+//人物被點選的座標
+var current_x = 0;
+var current_y = 0;
+
+//人物被點選前的舊座標
+var old_x = 0;
+var old_y = 0;
+
+//我們的 ID，給程式指定人物元件（div）用
+var myID = '';
+
+//顯示在網頁上的人物名稱
+var myName = '';
+
+//前端接收 server 上 的 socket 訊息
+var socket;
+
+$(document).ready(function(){
+           //人物換圖的間距時間
+           timer = setInterval(setAction, 300);
+
+           //透過 web server 的 8080 port 來進行連線
+           socket = io.connect('http://192.168.56.100:8080/');
+          
+           //告訴server您的名字
+           socket.on('connect', function() {
+               socket.emit('check_login', prompt('貴姓大名？'));
+           });
+
+           //新增自己的角色 (server回傳您的名稱，再寫到網頁上)
+           socket.on('add_new_user_myself',function(obj) {
+                     myID = obj.new_user_id;
+                     myName = obj.new_user_name;
+                     var html = "<div class='div_container' id='role_" + obj.new_user_id + "'><div id='myMsg_" + obj.new_user_id + "' style='position: absolute; top: -35px; width: 500px;'></div><div class='div_role' id='myRole_" + obj.new_user_id + "'><img src='./images/roles/a" + getRandRoleImg() + ".png' /></div></div>";
+                     $('.div_scene').append(html);
+           });
+
+           //加入其他使用者
+           socket.on('add_new_user', function(obj){
+                     var html = "<div class='div_container' id='role_" + obj.new_user_id + "'><div id='myMsg_" + obj.new_user_id + "' style='position: absolute; top: -35px; width: 500px;'></div><div class='div_role' id='myRole_" + obj.new_user_id + "'><img src='./images/roles/a" + getRandRoleImg() + ".png' /></div></div>";
+                     $('.div_scene').append(html);
+
+                     //告訴別人自己在哪裡（因為使用者上線時，場境是無人狀態，所以要告訴新上線的人）
+                     socket.emit('feedback_other_exist', {
+                                id: myID,
+                                name: myName,
+                                new_user_id: obj.new_user_id
+                     });
+           });
+
+           //將他人角色的位置加以移動
+           socket.on('feedback_user_position', function(obj) {
+                     //人物移動
+                     $(".div_container[id=role_" + obj.otherID + "]").animate({
+                                'left': (obj.left - 35) + 'px',
+                                'top': (obj.top - 35) + 'px'
+                                },
+                                {duration: 2000});
+
+                     //置換圖片
+                     $('#myRole_' + obj.otherID + ' img').css({
+                                'top': obj.imgV * - 48 + 'px'
+                     });
+           });
+
+           //通知最後進聊天室的人，我在哪裡
+           socket.on('feedback_where_I_am', function(obj){
+                     if( myID == obj.new_user_id )
+                     {
+                                var html = "<div class='div_container' id='role_" + obj.id + "'><div id='myMsg_" + obj.id + "' style='position: absolute; top: -35px; width: 500px;'></div><div class='div_role' id='myRole_" + obj.id + "'><img src='./images/roles/a" + getRandRoleImg() + ".png' /></div></div>";
+                                $('.div_scene').append(html);
+                     }
+           });
+
+           //回傳使用者所傳出的訊息（＊重要）
+           socket.on('return_msg', function(obj) {
+                     $('#myMsg_' + obj.id).html( '[' + obj.time + '] ' + obj.name + ' 說: ' + obj.msg);
+           });
+          
+           //按下Enter時，送出文字
+           $('#txt_type').on('keypress', function(e) {
+                     if(e.keyCode == 13)
+                     {
+                                e.preventDefault();
+                                socket.emit( 'send_msg', {
+                                           id: myID,
+                                           name: myName,
+                                           msg: $('#txt_type').val()
+                                } );
+                                $('#txt_type').val('');
+                     }
+           });
+
+           //離開時的訊息
+           socket.on('leave_msg', function(obj) {
+                     $('#role_' + obj.id).remove();
+               alert( obj.name + ' 已離開聊天室' );
+           });
+});
+
+$(document).on('mousemove', '.div_scene', function(event) {
+           current_x = event.pageX;
+           current_y = event.pageY;
+
+           $('#myInfo').html(
+                                '目前滑鼠座標：<br />' +
+                                'top:' + current_x + '<br />' +
+                                'left:' + current_y + '<br />' +
+                                '人物座標：<br />' +
+                                'top: ' + old_x + ' <br />' +
+                                'left: ' + old_y );
+});
+
+$(document).on('click', '.div_scene', function(event){
+           //置換人物方向的圖片編號（縱軸）
+           if( current_x > old_x )
+           {
+                     imgVerticalNum = 2;
+           }
+           else if( current_x < old_x )
+           {
+                     imgVerticalNum = 1;
+           }
+           else
+           {
+                     if( current_y >= old_y )
+                                imgVerticalNum = 0;
+                     else if( current_y < old_y)
+                                imgVerticalNum = 3;
+           }
+
+           //將人物移動的座標，設定成舊座標，以利未來新座標與之比對
+           old_x = current_x;
+           old_y = current_y;
+
+           //告訴其他人，你的移動位置
+           socket.emit('other_user_position', {
+                     id: myID,
+                     left: current_x,
+                     top: current_y,
+                     imgV: imgVerticalNum
+           });
+          
+          
+           //人物移動
+           $(".div_container[id=role_" + myID + "]").animate({
+                     'left': (current_x - 35) + 'px',
+                     'top': (current_y - 35) + 'px'
+                     },
+                     {duration: 2000});
+
+           //置換圖片
+           $('#myRole_' + myID + ' img').css({
+                     'top': imgVerticalNum * - 48 + 'px'
+           });
+});
+
+//取得隨機人物圖案
+function getRandRoleImg()
+{
+           //人物圖片編號（min = 第一張；max = 最後一張）。
+           //未來這裡可以改成「登入時選擇」
+           var min = 1;
+           var max = 4;
+
+           //取得隨機人物圖片編號
+           var num = Math.floor( Math.random() * (max - min + 1) ) + min;
+
+           //在此範例中，因為人物圖片是01 ~ 04，所以不足 10 要補 0 在字串前面
+           if( num >= 10 )
+           {
+                     num = num.toString();
+           }
+           else
+           {
+                     num = '0' + num.toString();
+           }
+
+           return num;
+}
+
+//人物原地連續動作
+function setAction()
+{
+           //共四個動作，故從0開始，到2就是最後一張的範圍。若是超過，就到第一個圖示
+           if( imgHorizontalNum > 3 ) imgHorizontalNum = 0;
+
+           //切換圖片
+           $('.div_container img').css({
+                     'left': imgHorizontalNum * - 31.5 + 'px'
+           });
+          
+           imgHorizontalNum++;
+}
+</script>
+
+</head>
+
+<body>
+           <div class='div_scene'></div>
+           <div style='position: absolute; top: 790px; left: 10px;'>
+                     請輸入訊息：<input type='text' id='txt_type' style='width: 400px;' value='' />
+           </div>
+           <div style='position: absolute; top: 820px; left: 10px;' id='myInfo'></div>
+</body>
+
+</html>
