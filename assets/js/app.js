@@ -5,6 +5,8 @@ var Main = new Vue({
           arr2:[1,2,5],
           num2:11,
           result2:0,
+          num3:3,
+          result2:[1],    
           nowDTlength:2,
           DT: [{
             Id:0,
@@ -18,6 +20,9 @@ var Main = new Vue({
           this.Hideall()
         },
         methods: {
+          Fun3:function(){
+            this.result3=getRow(this.num3);
+          },
           Fun2:function(){
             this.result2=coinChange(this.arr2,this.num2);
           },
