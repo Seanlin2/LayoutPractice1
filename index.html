@@ -23,10 +23,15 @@
         <input type='button' value='Minus' @click='Minus()'  />       
       </div>
       <div>
-        <input type='text' v-model='arr2'  name='arry2'  />
-        <input type='number' v-model.number='num2'  name='number2'  />
+        各種幣值: <input type='text' v-model='arr2'  name='arry2'  />
+        總額: <input type='number' v-model.number='num2'  name='number2'  />
         <input type='button' value='Go' @click='Fun2()'  />
-        {{result2}}
+        最少的錢幣數量{{result2}} 
+      </div>
+      <div>        
+        三角形第幾層<input type='number' v-model.number='num3'  name='number3'  />
+        <input type='button' value='Go' @click='Fun3()'  />
+        當層陣列{{result3}}
       </div>
       <div class='box' v-for='(item, index) in DT' :key="item.Id" @click='Show(item.Id);' >
         <p>{{item.Id}}</p>
