@@ -16,19 +16,19 @@
   
   <div id='main'>
     <section id='boxbox'>      
-      <div>
+      <div class='ipbox'>
         <input type='number' v-model.number='num'  name='number'  />
         <input type='button' value='Go' @click='Change()'  />
         <input type='button' value='Add' @click='Add()'  />    
         <input type='button' value='Minus' @click='Minus()'  />       
       </div>
-      <div>
+      <div class='ipbox'>
         各種幣值: <input type='text' v-model='arr2'  name='arry2'  />
         總額: <input type='number' v-model.number='num2'  name='number2'  />
         <input type='button' value='Go' @click='Fun2()'  />
         最少的錢幣數量{{result2}} 
       </div>
-      <div>        
+      <div class='ipbox'>        
         三角形第幾層<input type='number' v-model.number='num3'  name='number3'  />
         <input type='button' value='Go' @click='Fun3()'  />
         當層陣列{{result3}}
