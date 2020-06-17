@@ -49,6 +49,11 @@ table {
 
 /* Custom Code */
 
+.ipbox {
+    margin: 20px auto;
+    width: 80%;
+}
+
 /* BOX */
 .box{
 	background-color: aliceblue;
