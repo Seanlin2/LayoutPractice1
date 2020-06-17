@@ -22,6 +22,12 @@
         <input type='button' value='Add' @click='Add()'  />    
         <input type='button' value='Minus' @click='Minus()'  />       
       </div>
+      <div>
+        <input type='text' v-model='arr2'  name='arry2'  />
+        <input type='number' v-model.number='num2'  name='number2'  />
+        <input type='button' value='Go' @click='Fun2()'  />
+        {{result2}}
+      </div>
       <div class='box' v-for='(item, index) in DT' :key="item.Id" @click='Show(item.Id);' >
         <p>{{item.Id}}</p>
       </div>
