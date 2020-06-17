@@ -6,7 +6,7 @@ var Main = new Vue({
           num2:11,
           result2:0,
           num3:3,
-          result2:[1],    
+          result3:[1],    
           nowDTlength:2,
           DT: [{
             Id:0,
