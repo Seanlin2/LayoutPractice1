@@ -2,6 +2,9 @@ var Main = new Vue({
         el: "#main",
         data: {
           num:2,
+          arr2:[1,2,5],
+          num2:11,
+          result2:0,
           nowDTlength:2,
           DT: [{
             Id:0,
@@ -15,6 +18,9 @@ var Main = new Vue({
           this.Hideall()
         },
         methods: {
+          Fun2:function(){
+            this.result2=coinChange(this.arr2,this.num2);
+          },
           Hideall: function(){
             this.sList.forEach(e => $('#' + e).hide());   
           },
