@@ -72,3 +72,52 @@ var Main = new Vue({
           }
         }
       });
+
+
+/**
+ * @param {number} rowIndex
+ * @return {number[]}
+ */
+var getRow = function(rowIndex) {
+    let arr = [];    
+    for(let i = 0; i<= rowIndex; i++){
+        arr.push(C(rowIndex,i));
+    }
+    return arr;
+};
+
+function C(n,c){
+    return NG(n,c)/NG(c,c);
+}
+
+function NG(n,c){    
+    let k = 1;
+    for(let i = n; i> (n-c); i--){
+        k *= i; 
+    }    
+    return k;
+}
+
+var coinChange = function(coins, amount) {
+    if (!amount || !coins.length) {
+        return 0;
+    }
+    
+    let out = [0]; 
+    let i, l;      
+    let index = 1; 
+    
+    while (!out[amount]) {
+        out[index] = Infinity; 
+        for (i = 0, l = coins.length; i < l; i++) {           
+            
+            if (coins[i] <= index) {
+                out[index] = Math.min(out[index], 1 + out[index - coins[i]]);
+            } 
+            
+        }
+        index++;   
+    }
+    
+    return out[amount] === Infinity ? -1 : out[amount];
+};
