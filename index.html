@@ -22,6 +22,9 @@
         <input type='button' value='Add' @click='Add()'  />    
         <input type='button' value='Minus' @click='Minus()'  />       
       </div>
+      <div class='ipbox'>        
+        Console:<input type='button' value='Go' onclick='game.Go()'  />  
+      </div>
       <div class='ipbox'>
         各種幣值: <input type='text' v-model='arr2'  name='arry2'  />
         總額: <input type='number' v-model.number='num2'  name='number2'  />
@@ -55,6 +58,7 @@
   </div>
   <!--FS S-->
   <script type='text/javascript' src='assets/js/app.js'></script>
+  <script type='text/javascript' src='assets/js/game.js'></script>
   <!--FS E-->
 </body>
 </html>
