@@ -12,8 +12,8 @@
     <script>
       //screen.orientation.lock();   // webkit only
       //screen.lockOrientation("orientation");
-      await document.body.requestFullscreen();
-      await screen.orientation.lock("landscape");
+      document.body.requestFullscreen();
+      screen.orientation.lock("landscape");
       screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
 
     </script>
