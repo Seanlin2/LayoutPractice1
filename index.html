@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="assets/css/custom.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    
+    <script>
+      screen.orientation.lock();   // webkit only
+      screen.lockOrientation("orientation");
+      screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
+
+    </script>
 </head>
 <body>
   
