@@ -10,8 +10,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-      screen.orientation.lock();   // webkit only
-      screen.lockOrientation("orientation");
+      //screen.orientation.lock();   // webkit only
+      //screen.lockOrientation("orientation");
+      await document.body.requestFullscreen();
+      await screen.orientation.lock("landscape");
       screen.lockOrientationUniversal = screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation;
 
     </script>
