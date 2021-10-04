@@ -1,7 +1,7 @@
 var Main = new Vue({
         el: "#main",
         data: {
-          num:2,
+          num:5,
           arr2:[1,2,5],
           num2:11,
           result2:0,
@@ -12,12 +12,16 @@ var Main = new Vue({
             Id:0,
             text:'',
           }],
-          BBDT: [{Id:1},{Id:2},{Id:3},{Id:4}],
-          sList:['bgbox','BBbox','mwbox','pmbox']
+          BBDT: [{Id:1},{Id:2},{Id:3},{Id:4},{Id:5}],
+          sList:['bgbox','BBbox','mwbox','pmbox','forscrollout']
         },
         created: function () {
           this.Init();
           this.Hideall()
+          //ScrollOut
+          ScrollOut({
+                /* options */
+          });
         },
         methods: {
           Fun3:function(){
