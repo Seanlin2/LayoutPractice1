@@ -20,6 +20,8 @@ var Main = new Vue({
           this.Hideall()
           //ScrollOut
           ScrollOut({
+            targets: ".sticky-header",
+            offset: 400
             onShown: function(el) {
             // use the web animation API
               el.animate([{ opacity: 0 }, { opacity: 1 }], 1000);
