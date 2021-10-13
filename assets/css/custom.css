@@ -162,8 +162,12 @@ table {
 }
 /*scroll OUT S*/
 [data-scroll] {
-  transition: opacity 1s;
+  -webkit-transition: opacity 2s, -webkit-transform 2s;
+  transition: opacity 2s, -webkit-transform 2s;
+  transition: opacity 2s, transform 2s;
+  transition: opacity 2s, transform 2s, -webkit-transform 2s;
 }
+
 [data-scroll="in"] {
    opacity: 1;
   -webkit-transform: translateY(0);
