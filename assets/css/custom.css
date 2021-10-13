@@ -165,10 +165,14 @@ table {
   transition: opacity 1s;
 }
 [data-scroll="in"] {
-  opacity: 1;
+   opacity: 1;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
 }
 [data-scroll="out"] {
   opacity: 0;
+  -webkit-transform: translateY(50px);
+          transform: translateY(50px);
 }
 /*scroll OUT E*/
 
